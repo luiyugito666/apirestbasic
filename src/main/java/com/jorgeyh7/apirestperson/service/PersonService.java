@@ -34,4 +34,10 @@ public class PersonService {
     }
 
 
+    public PersonDTO login(String user, String password) {
+        Person person = personRepository.findByUserAndPassword(user,password);
+        PersonDTO personDTO= new PersonDTO(person.getId(),person.getUbication(), person.getPosition(), person.getFullName(), person.getImage());
+        return personDTO;
+
+    }
 }

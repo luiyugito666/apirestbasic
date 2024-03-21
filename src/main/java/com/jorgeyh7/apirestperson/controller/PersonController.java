@@ -1,6 +1,7 @@
 package com.jorgeyh7.apirestperson.controller;
 
 import com.jorgeyh7.apirestperson.model.Person;
+import com.jorgeyh7.apirestperson.service.PersonDTO;
 import com.jorgeyh7.apirestperson.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -37,6 +38,13 @@ public class PersonController {
     public void updatePerson(@RequestBody Person person){
 
         personService.updatePerson(person);
+
+    }
+
+    @PostMapping("/login")
+    @ResponseBody
+    public PersonDTO login(@RequestBody Person person){
+        return personService.login(person.getUser(),person.getPassword());
 
     }
 
